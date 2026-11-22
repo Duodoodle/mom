@@ -416,8 +416,19 @@ function closeModal() {
       showModal(`${media}<p class="photo-caption">${memory.caption} · ${memory.date}</p>`);
     }
     function openNote(note) {
-      showModal(`<div class="modal-note"><div class="note-icon">💌</div><div class="eyebrow">A little message from</div><h3>${note.name}</h3><p>${note.text}</p><div class="eyebrow">With love, always</div></div>`);
-    }
+  const extraMessage = note.name === "Us"
+    ? `<p class="extra-message">Gaurav, Jiya and Tanay</p>`
+    : "";
+
+  showModal(`<div class="modal-note">
+    <div class="note-icon">💌</div>
+    <div class="eyebrow">A little message from</div>
+    <h3>${note.name}</h3>
+    <p>${note.text}</p>
+    <div class="eyebrow">With love, always</div>
+    ${extraMessage}
+  </div>`);
+}
     function openVideo(video) {
   const content = video.url
     ? `<div class="modal-note"><div class="eyebrow">${video.name}</div><video controls autoplay playsinline style="width:100%;max-height:70svh;border-radius:12px;background:#2D2A26;"><source src="${video.url}">Your browser does not support the video element.</video></div>`

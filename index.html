@@ -10,23 +10,27 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --cream: #FFF7F6;
-      --paper: #FFFCFB;
-      --terracotta: #C94C65;
-      --blush: #F6DADD;
-      --ink: #762D40;
-      --muted: #92757A;
-      --line: #EDE4DC;
-      --shadow: 0 18px 50px rgba(74, 49, 35, .09);
-      --serif: "Playfair Display", Georgia, serif;
-      --sans: "DM Sans", Arial, sans-serif;
-    }
+  --cream: #C62845;
+  --paper: #FFF8F5;
+  --terracotta: #F4A6B5;
+  --blush: #F8D7DE;
+  --ink: #682638;
+  --muted: #F6DCE1;
+  --line: #EABAC5;
+  --shadow: 0 18px 50px rgba(70, 15, 30, .20);
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "DM Sans", Arial, sans-serif;
+}
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      margin: 0; background: var(--cream); color: var(--ink);
-      font-family: var(--sans); line-height: 1.7; -webkit-font-smoothing: antialiased;
-    }
+  margin: 0;
+  background: var(--cream);
+  color: #FFF8F5;
+  font-family: var(--sans);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
     button { font: inherit; cursor: pointer; }
     a { color: inherit; }
     .wrap { width: min(1100px, calc(100% - 40px)); margin: 0 auto; }
@@ -43,12 +47,21 @@
     .hero-copy { position: relative; z-index: 1; }
     .hero-copy .subtitle { font-family: var(--serif); font-size: clamp(1.25rem, 2.5vw, 1.65rem); color: #78675D; margin-bottom: 27px; }
     .hero-copy .intro { color: var(--muted); max-width: 450px; margin-bottom: 30px; }
-    .btn {
-      border: 0; background: var(--terracotta); color: white; border-radius: 999px;
-      padding: 14px 23px; font-weight: 600; box-shadow: 0 8px 20px rgba(201,76,101,.2);
-      transition: transform .2s, box-shadow .2s, background .2s;
-    }
-    .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 25px rgba(201,76,101,.25); background: #AD3D56; }
+   .btn {
+  border: 0;
+  background: #FFF0F2;
+  color: #9F233D;
+  border-radius: 999px;
+  padding: 14px 23px;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(70, 15, 30, .18);
+  transition: transform .2s, box-shadow .2s, background .2s;
+}
+    .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(70, 15, 30, .25);
+  background: #FFFFFF;
+}
     .btn:focus-visible, .text-btn:focus-visible, .envelope:focus-visible { outline: 3px solid #EFA5AD; outline-offset: 4px; }
     .hero-photo { position: relative; max-width: 480px; justify-self: end; width: 100%; }
     .photo-frame { background: #fff; padding: 12px 12px 17px; border-radius: 22px; box-shadow: var(--shadow); transform: rotate(2deg); }
@@ -75,17 +88,19 @@
     .hearts-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px 18px; max-width: 900px; margin: auto; justify-items: center; }
     .heart-button {
       width: 100%; max-width: 220px; min-height: 200px; border: 0; padding: 38px 20px 24px;
-      color: #762D40; background: linear-gradient(145deg, #F6DADD, #EFA5AD);
+     color: #762D40;
+  background: linear-gradient(145deg, #FFF0F2, #F4B7C3);
       clip-path: polygon(50% 94%, 10% 58%, 3% 43%, 5% 29%, 15% 17%, 29% 13%, 41% 18%, 50% 30%, 59% 18%, 71% 13%, 85% 17%, 95% 29%, 97% 43%, 90% 58%);
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px;
       text-align: center; transition: transform .25s, filter .25s; filter: drop-shadow(0 8px 10px rgba(118,45,64,.12));
     }
     .heart-button:hover, .heart-button:focus-visible { transform: translateY(-6px) scale(1.035); filter: drop-shadow(0 13px 14px rgba(118,45,64,.2)); }
-    .heart-button .heart-symbol { font-size: 1.35rem; line-height: 1; color: #C94C65; }
+    .heart-button .heart-symbol { font-size: 1.35rem; line-height: 1; color: #C62845; }
     .heart-button strong { font-family: var(--serif); font-size: 1.08rem; line-height: 1.2; font-weight: 600; overflow-wrap: anywhere; }
-    .heart-button.video-heart { background: linear-gradient(145deg, #EFA5AD, #C94C65); color: white; }
+    .heart-button.video-heart { background: linear-gradient(145deg, #F6B9C5, #9F233D);
+  color: white; }
     .heart-button.video-heart .heart-symbol { color: white; }
-    .reason-card { max-width: 620px; margin: auto; text-align: center; background: #F6DADD; border-radius: 22px; padding: 45px 28px; }
+    .reason-card { max-width: 620px; margin: auto; text-align: center; background: #F8D7DE; border-radius: 22px; padding: 45px 28px; }
     .jar { font-size: 3rem; margin-bottom: 10px; }
     .reason-text { min-height: 76px; display: grid; place-items: center; font-family: var(--serif); font-size: clamp(1.25rem, 3vw, 1.7rem); line-height: 1.35; margin: 15px auto 25px; max-width: 470px; transition: opacity .25s, transform .25s; }
     .reason-text.fade { opacity: 0; transform: translateY(7px); }
@@ -101,9 +116,10 @@
     .coupon.redeemed .btn { background: #8c9b7b; box-shadow: none; }
     .stamp { display: none; position: absolute; inset: 0; place-items: center; pointer-events: none; color: #718363; font-weight: 800; font-size: 1.25rem; letter-spacing: .08em; transform: rotate(-14deg); text-shadow: 0 1px white; }
     .coupon.redeemed .stamp { display: grid; animation: stamp .45s ease-out both; }
-    footer { padding: 45px 20px 55px; text-align: center; background: #F6DADD; color: #81505D; font-family: var(--serif); font-size: 1.15rem; }
+    footer { padding: 45px 20px 55px; text-align: center;  background: #F8D7DE;
+  color: #762D40; font-family: var(--serif); font-size: 1.15rem; }
     .footer-heart { color: var(--terracotta); }
-    .modal { position: fixed; inset: 0; z-index: 20; display: none; place-items: center; padding: 20px; background: rgba(36,30,26,.72); backdrop-filter: blur(5px); }
+    .modal { position: fixed; inset: 0; z-index: 20; display: none; place-items: center; padding: 20px; background: rgba(55, 10, 25, .78); backdrop-filter: blur(5px); }
     .modal.open { display: grid; animation: fadeIn .2s ease; }
     .modal-panel { position: relative; width: min(680px, 100%); max-height: 90svh; overflow: auto; background: var(--cream); border-radius: 18px; padding: 22px; box-shadow: 0 25px 80px rgba(0,0,0,.25); }
     .modal-panel img { display: block; max-width: 100%; max-height: 72svh; margin: auto; object-fit: contain; border-radius: 10px; }

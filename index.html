@@ -172,11 +172,15 @@
         { name: "Ashu maasi", text: "Happy birthday darling ❤️ <br> You are not just my best friend, you are my soul connection. From working together to holidaying together, from knowing each other’s strengths and weaknesses to understanding unspoken thoughts, we share a bond beyond words. Life gave me a friend, but my heart found family in you. Forever grateful for us..❤️" },
         { name: "Sona aunty", text: "Happy Birthday, bestie! 🥳❤️ Wishing you endless happiness, lots of love, success, and countless beautiful memories. May all your dreams come true and may your smile never fade. <br> Keep shining and enjoy your special day to the fullest! Lots of love! 🎂💖" },
         { name: "Sunita aunty", text: "Dearest babe, cheers to another blessed year of happiness love chit chats naughtiness awaragardi staycations “ mast waali masti”💞🫶💕keep being the lovely soul u have been always darling❤️❤️happy happiest jhappiwala bday sweety🥂" },
-        { name: "Shweta Batra ma'am", text: "Write your personal note here." }
+        { name: "Shweta Batra ma'am", text: "Happy Birthday to my favourite person! ❤️💕<br> I honestly don’t know how to put into words what you mean to me. Some people become such an important part of your life that you just cannot imagine things without them, and you are that person for me.😘🥰<br> I miss those days when we worked together, when we could share everything, laugh over the smallest things and just be around each other. Even though we are still in the same place, I miss having you around me every day.🥹🤗<br>There are so many little things that remind me of you. Sometimes I just wish I could walk up to you, share something silly, discuss something or simply sit and talk. You have made such a special place in my life, and nobody can ever take that place.😍🫶🏻<br>I am genuinely so proud of you and everything you achieve. I wish you good health, endless happiness, success in everything you do and countless reasons to smile. May this year bring you beautiful surprises, new opportunities and everything you have been wishing for. May you always be surrounded by people who love you and make you feel as special as you are.💕<br>Just stay the way you are. And please remember, no matter where we work or how busy life gets, I am always there for you. 😂❤️<br>Love you loads. Have the most amazing birthday. You deserve all the happiness in the world! 💖" }
       ],
       video: {
         name: "A Special Video",
         url: "https://duodoodle.github.io/mom/vid.mp4" // Add a direct video URL, e.g. "https://your-site.com/video.mp4"
+      },
+      video2: {
+        name: "A Special Video",
+        url: "" // Add the second video's direct URL here
       },
       reasons: [
         "You give us the freedom to do what we want, and how we want.",
@@ -310,6 +314,14 @@
     videoButton.innerHTML = `<span class="heart-symbol">▶</span><strong>${PERSONAL.video.name}</strong>`;
     videoButton.addEventListener("click", () => openVideo(PERSONAL.video));
     heartsGrid.append(videoButton);
+
+    const videoButton2 = document.createElement("button");
+    videoButton2.className = "heart-button video-heart reveal";
+    videoButton2.type = "button";
+    videoButton2.setAttribute("aria-label", `Open ${PERSONAL.video2.name}`);
+    videoButton2.innerHTML = `<span class="heart-symbol">▶</span><strong>${PERSONAL.video2.name}</strong>`;
+    videoButton2.addEventListener("click", () => openVideo(PERSONAL.video2));
+    heartsGrid.append(videoButton2);
 
     let lastReason = -1;
     $("#draw-reason").addEventListener("click", () => {

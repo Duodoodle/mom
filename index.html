@@ -303,6 +303,25 @@
 
   <script>
     const $ = (selector, root = document) => root.querySelector(selector);
+    // Background birthday music
+const backgroundMusic = new Audio("https://duodoodle.github.io/mom/music.mp3");
+backgroundMusic.loop = true;
+backgroundMusic.volume = 0.35;
+
+let resumeMusicAfterVideo = false;
+
+function startMusic() {
+  backgroundMusic.play().catch(() => {
+    // The browser may require the visitor to interact first.
+  });
+}
+
+// Try autoplay when the website opens
+window.addEventListener("load", startMusic);
+
+// If autoplay is blocked, start on the visitor's first interaction
+document.addEventListener("pointerdown", startMusic, { once: true });
+document.addEventListener("keydown", startMusic, { once: true });
     const makePhoto = (url, label, className = "photo-placeholder") => url
       ? `<img src="${url}" alt="${label.replace(/"/g, "&quot;")}" loading="lazy">`
       : `<div class="${className}"><span>${label}</span></div>`;
@@ -381,10 +400,15 @@
       document.body.style.overflow = "hidden";
       $("#close-modal").focus();
     }
-    function closeModal() {
-      modal.classList.remove("open");
-      document.body.style.overflow = "";
-    }
+function closeModal() {
+  modal.classList.remove("open");
+  document.body.style.overflow = "";
+
+  if (resumeMusicAfterVideo) {
+    backgroundMusic.play().catch(() => {});
+    resumeMusicAfterVideo = false;
+  }
+}
     function openPhoto(memory, index) {
       const media = memory.photo
         ? `<img src="${memory.photo}" alt="${memory.caption.replace(/"/g, "&quot;")}">`
@@ -395,11 +419,17 @@
       showModal(`<div class="modal-note"><div class="note-icon">💌</div><div class="eyebrow">A little message from</div><h3>${note.name}</h3><p>${note.text}</p><div class="eyebrow">With love, always</div></div>`);
     }
     function openVideo(video) {
-      const content = video.url
-        ? `<div class="modal-note"><div class="eyebrow">${video.name}</div><video controls autoplay playsinline style="width:100%;max-height:70svh;border-radius:12px;background:#2D2A26;"><source src="${video.url}">Your browser does not support the video element.</video></div>`
-        : `<div class="modal-note"><div class="note-icon">▶</div><h3>${video.name}</h3><p>Add your video URL in the PERSONAL settings at the top of the HTML file.</p></div>`;
-      showModal(content);
-    }
+  const content = video.url
+    ? `<div class="modal-note"><div class="eyebrow">${video.name}</div><video controls autoplay playsinline style="width:100%;max-height:70svh;border-radius:12px;background:#2D2A26;"><source src="${video.url}">Your browser does not support the video element.</video></div>`
+    : `<div class="modal-note"><div class="note-icon">▶</div><h3>${video.name}</h3><p>Add your video URL in the PERSONAL settings at the top of the HTML file.</p></div>`;
+
+  if (video.url) {
+    resumeMusicAfterVideo = !backgroundMusic.paused;
+    backgroundMusic.pause();
+  }
+
+  showModal(content);
+}
     $("#close-modal").addEventListener("click", closeModal);
     modal.addEventListener("click", event => { if (event.target === modal) closeModal(); });
     document.addEventListener("keydown", event => { if (event.key === "Escape" && modal.classList.contains("open")) closeModal(); });
